@@ -18,11 +18,11 @@ void puts2(char *str)
 		len++;
 	}
 	str -= len;
-	if ((len % 2) != 0)
+	if ((len % 2) == 0)
 	{
 		len--;
 	}
-	for (i = 0; i < len; i += 2)
+	for (i = 0; i <= len; i += 2)
 	{
 		_putchar(*(str + i));
 	}
