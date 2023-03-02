@@ -12,7 +12,7 @@ char *cap_string(char *s)
 	i = 1;
 	while (s[i] != '\0')
 	{
-		if (s[i] >= 97 && s[i] <= 122)
+		if (s[i] >= 'a' && s[i] <= 'z')
 		{
 			if (s[i - 1] == '\t' ||
 			s[i - 1] == '\n' ||
