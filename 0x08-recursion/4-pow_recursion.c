@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * pow_recursion - func
+  * _pow_recursion - func
   * @x: param
   * @y: param
   * Return: int
@@ -12,8 +12,8 @@ int _pow_recursion(int x, int y)
 		return (x);
 	if (y > 0)
 		return (x * _pow_recursion(x, y - 1));
-	else if ( y == 0)
+	else if (y == 0)
 		return (1);
 	else
-		return(-1);
+		return (-1);
 }
