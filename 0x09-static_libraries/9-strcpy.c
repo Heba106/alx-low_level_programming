@@ -1,12 +1,18 @@
 #include "main.h"
 /**
-  * _strncpy - func
-  * @dest: param
-  * @src: param
-  * @n: int
-  * Return: out
-  */
-char *_strncpy(char *dest, char *src, int n)
+ * _strcpy - Copy paste string
+ *@dest: destination
+ *@src: source
+ *Return: dest
+ */
+char *_strcpy(char *dest, char *src)
 {
-	return (dest);
+int inc = 0;
+while (*(src + inc) != '\0')
+{
+*(dest + inc) = *(src + inc);
+inc++;
+}
+*(dest + inc) = '\0';
+return (dest);
 }

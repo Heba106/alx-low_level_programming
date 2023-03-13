@@ -1,10 +1,15 @@
 #include "main.h"
 /**
-  * _abs - func
-  * @n: param
-  * Return: out
-  */
-int _abs(int n)
+ * _abs - prints the absolute value of a number
+ *@i: number targeted
+ *Return: returns 0
+ */
+int _abs(int i)
 {
-	return (0);
+if (i > 0)
+return (i);
+else if (i < 0)
+return (-i);
+else
+return (0);
 }
