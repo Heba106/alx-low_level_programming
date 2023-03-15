@@ -15,7 +15,7 @@ char *argstostr(int ac, char **av)
 	int x = 0;
 	int len = 0;
 
-	if ( ac == 0 || av == NULL)
+	if (ac == 0 || av == NULL)
 		return (NULL);
 
 	for (i = 0; i < ac; i++)
@@ -28,7 +28,7 @@ char *argstostr(int ac, char **av)
 		}
 	}
 
-	arr = malloc ((len + ac) * sizeof(char));
+	arr = malloc((len + ac + 1) * sizeof(char));
 
 	for (i = 0; i < ac; i++)
 	{
@@ -42,6 +42,5 @@ char *argstostr(int ac, char **av)
 		arr[x] = '\n';
 		x++;
 	}
-	return arr;
+	return (arr);
 }
-		
