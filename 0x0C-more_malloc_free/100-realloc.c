@@ -5,7 +5,8 @@
   * _realloc - func
   * @ptr: param
   * @old_size: param
-  * new_size: param
+  * @new_size: param
+  * Return: return
   */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
