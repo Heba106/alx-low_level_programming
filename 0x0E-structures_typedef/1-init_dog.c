@@ -1,18 +1,16 @@
 #include "dog.h"
-#include <stdlib.h>
 /**
-  * init_dog - initialize
-  * @d: point
-  * @name: name
-  * @age: age
-  * @owner: owner
-  * Return: pointer
+  * init_dog -  initialize a variable of type struct dog
+  * @d: puntero a la estructrua dog
+  * @name: puntero a la varaible name de la estructura dog
+  * @age: edad
+  * @owner: puntero a la variable owner de la estructrua dog
   */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	if (d != '\0')
+	if (d)
 	{
-		d->name = name;
+		(*d).name = name;
 		d->age = age;
 		d->owner = owner;
 	}
