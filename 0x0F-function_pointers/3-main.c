@@ -1,10 +1,10 @@
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include "3-calc.h"
-
 /**
  * main - Entry point
- *
+ * @argc: argc
+ * @argv: argv
  * Return: 0 if exited properly, non-zero otherwise
  */
 int main(int argc, char *argv[])
@@ -18,18 +18,16 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	operator = argv[2];
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
+	operator = argv[2];
 
 	if ((operator[0] == '/' || operator[0] == '%') && num2 == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
-
 	op_func = get_op_func(operator);
-
 	if (op_func == NULL)
 	{
 		printf("Error\n");

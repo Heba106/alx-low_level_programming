@@ -1,10 +1,10 @@
+#include "3-calc.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "3-calc.h"
 /**
   * get_op_func - func
   * @s: param
-  * Return: func
+  * Return: pointer
   */
 int (*get_op_func(char *s))(int, int)
 {
@@ -21,12 +21,11 @@ int (*get_op_func(char *s))(int, int)
 	i = 0;
 	while (ops[i].op)
 	{
-		if (s[0] == ops[i].op[0] && s[1] == '\0')
+		if (ops[i].op[0] == s[0] && s[1] == '\0')
 		{
 			return (ops[i].f);
 			++i;
 		}
-
 	}
 	return (NULL);
 }
