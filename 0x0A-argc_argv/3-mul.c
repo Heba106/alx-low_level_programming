@@ -1,16 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
- * main - Entry point
- * @argc: argc
- * @argv: argv
- * Return: 0 if exited properly, non-zero otherwise
+ * main - multiplies two numbers.
+ * @argc: argument count
+ * @argv: arguments
+ *
+ * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	if (argc != 3)
+	int x, y;
+
+	if (argc < 3)
+	{
 		printf("Error\n");
-	else
-		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+		return (1);
+	}
+
+	x = atoi(argv[1]);
+	y = atoi(argv[2]);
+	printf("%d\n", x * y);
+
 	return (0);
 }

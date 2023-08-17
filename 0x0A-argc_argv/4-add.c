@@ -1,29 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-/**
- * main - Entry point
- * @argc: argc
- * @argv: argv
- * Return: 0 if exited properly, non-zero otherwise
- */
-int main(int argc, char *argv[])
-{
-	int sum = 0;
-	int i;
-	int j;
 
-	for (i = 1; i < argc; i++)
+/**
+ * main - adds positive numbers.
+ * @argc: argument count
+ * @argv: arguments
+ *
+ * Return: 0
+ */
+int main(int argc, char **argv)
+{
+	int i, n, sum = 0;
+	char *flag;
+
+	if (argc < 2)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		printf("0\n");
+		return (0);
+	}
+
+	for (i = 1; argv[i]; i++)
+	{
+		n = strtol(argv[i], &flag, 10);
+		if (*flag)
 		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
-			{
-				printf("Error\n");
-				return (1);
-			}
+			printf("Error\n");
+			return (1);
 		}
-		sum += atoi(argv[i]);
+		else
+		{
+			sum += n;
+		}
 	}
 	printf("%d\n", sum);
+
 	return (0);
 }
