@@ -1,43 +1,39 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
+
 /**
-  * _realloc - func
-  * @ptr: param
-  * @old_size: param
-  * @new_size: param
-  * Return: return
-  */
+ * _realloc - reallocates a memory block using malloc and free
+ *
+ * @ptr: pointer to the memory previously allocated
+ * @old_size:is the size, in bytes, of the allocated space for ptr
+ * @new_size: the new size, in bytes of the new memory block
+ *
+ * Return: pointer allocate new size memory, or NULL
+ */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i;
-	char *res;
-	char *old;
+	char *p;
+	unsigned int i, n = new_size;
+	char *oldp = ptr;
 
-	if (old_size == new_size)
-		return (ptr);
-
-	if (!ptr)
+	if (ptr == NULL)
 	{
-		res = malloc(new_size);
-		return (res);
+		p = malloc(new_size);
+		return (p);
 	}
-
-	if (new_size == 0)
+	else if (new_size == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
-
-	res = malloc(new_size);
-
-	if (!res)
+	else if (new_size == old_size)
+		return (ptr);
+	p = malloc(new_size);
+	if (p == NULL)
 		return (NULL);
-	old = ptr;
-
-	for (i = 0; i < old_size; i++)
-		res[i] = old[i];
-
+	if (new_size > old_size)
+		n = old_size;
+	for (i = 0; i < n; i++)
+		p[i] = oldp[i];
 	free(ptr);
-	return (res);
+	return (p);
 }

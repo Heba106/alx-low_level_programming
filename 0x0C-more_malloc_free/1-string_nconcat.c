@@ -1,41 +1,47 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
+
 /**
-  * string_nconcat -func
-  * @s1: string
-  * @s2: string
-  * @n: intger
-  * Return: return
-  */
+ * string_nconcat - a function that concatenates two strings.
+ *
+ * @s1: first char
+ * @s2: secound char
+ * @n: unsigned int
+ *
+ * Return: If the function fails, it should return NULL
+ */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *ptr;
-	unsigned int i = 0;
-	unsigned int j = 0;
-	unsigned int len1 = 0;
-	unsigned int len2 = 0;
+	unsigned int x, y, z;
+	char *s;
 
-	while (s1 && s1[len1])
-		len1++;
-
-	while (s2 && s2[len2])
-		len2++;
-
-	if (n < len2)
-		ptr = malloc(sizeof(char) * (len1 + n + 1));
+	if (s1 == NULL)
+	{
+		x = 0;
+	}
 	else
-		ptr = malloc(sizeof(char) * (len1 + len2 + 1));
-
-	if (!ptr)
+	{
+		for (x = 0; s1[x]; ++x)
+		;
+	}
+	if (s2 == NULL)
+	{
+		y = 0;
+	}
+	else
+	{
+		for (y = 0; s2[y]; ++y)
+		;
+	}
+	if (y > n)
+		y = n;
+	s = malloc(sizeof(char) * (x + y + 1));
+	if (s == NULL)
 		return (NULL);
-
-	for (i = 0; i < len1; i++)
-		ptr[i] = s1[i];
-
-	while (s2 && s2[j] != '\0' && j < n)
-		ptr[i++] = s2[j++];
-
-	ptr[i] = '\0';
-	return (ptr);
+	for (z = 0; z < x; z++)
+		s[z] = s1[z];
+	for (z = 0; z < y; z++)
+		s[z + x] = s2[z];
+	s[x + y] = '\0';
+	return (s);
 }
+
