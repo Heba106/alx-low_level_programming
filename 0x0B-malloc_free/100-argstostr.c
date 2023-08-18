@@ -2,45 +2,48 @@
 #include <stdlib.h>
 
 /**
-  * argstostr - function
-  * @ac: param
-  * @av: param
-  * Return: retun
-  */
+ * argstostr - concatenates all the arguments of your program.
+ * @ac: arguments count
+ * @av: arguments vector
+ *
+ * Return: a pointer to a new string, or NULL if it fails
+ */
 char *argstostr(int ac, char **av)
 {
-	char *arr;
-	int i;
-	int j;
-	int x = 0;
-	int len = 0;
+	char *str, *s;
+	int i, j, k, len = 0;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
 	for (i = 0; i < ac; i++)
 	{
+		s = av[i];
 		j = 0;
-		while (av[i][j] != '\0')
-		{
+
+		while (s[j++])
 			len++;
-			j++;
-		}
+		len++;
 	}
 
-	arr = malloc((len + ac + 1) * sizeof(char));
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
 
-	for (i = 0; i < ac; i++)
+	for (i = 0, j = 0; i < ac && j < len; i++)
 	{
-		j = 0;
-		while (av[i][j] != '\0')
+		s = av[i];
+		k = 0;
+
+		while (s[k])
 		{
-			arr[x] = av[i][j];
+			str[j] = s[k];
+			k++;
 			j++;
-			x++;
 		}
-		arr[x] = '\n';
-		x++;
+		str[j++] = '\n';
 	}
-	return (arr);
+	str[j] = '\0';
+
+	return (str);
 }

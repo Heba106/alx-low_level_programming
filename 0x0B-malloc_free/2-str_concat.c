@@ -1,46 +1,47 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
+
 /**
-  * str_concat - func
-  * @s1: param
-  * @s2: param
-  * Return: return
-  */
+ * str_concat - concatenates two strings.
+ * @s1: first string
+ * @s2: second string
+ *
+ * Return: a pointer to a newly allocated space in memory which
+ * contains the contents of s1, followed by the contents of s2,
+ * and null terminated. NULL on failure
+ */
 char *str_concat(char *s1, char *s2)
 {
-	int i = 0;
-	int x = 0;
-	int len = 0;
-	char *res;
+	int i, j, len1, len2, len;
+	char *result;
 
-	while (s1 != NULL && s1[i] != '\0')
+	len1 = len2 = 0;
+
+	if (s1 != NULL)
 	{
-		len++;
-		i++;
+		i = 0;
+		while (s1[i++] != '\0')
+			len1++;
 	}
-	i = 0;
-	while (s2 != NULL && s2[i] != '\0')
+
+	if (s2 != NULL)
 	{
-		len++;
-		i++;
+		i = 0;
+		while (s2[i++] != '\0')
+			len2++;
 	}
-	i = 0;
-	res = malloc(sizeof(char) * (len + 1));
-	if (res == NULL)
+
+	len = len1 + len2;
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (result == NULL)
 		return (NULL);
-	while (s1 != NULL && s1[i] != '\0')
-	{
-		res[x] = s1[i];
-		i++;
-		x++;
-	}
-	i = 0;
-	while (s2 != NULL && s2[i] != '\0')
-	{
-		res[x] = s2[i];
-		i++;
-		x++;
-	}
-	res[x] = '\0';
-	return (res);
+
+	for (i = 0; i < len1; i++)
+		result[i] = s1[i];
+	for (j = 0; j < len2; j++, i++)
+		result[i] = s2[j];
+	result[len] = '\0';
+
+	return (result);
 }
